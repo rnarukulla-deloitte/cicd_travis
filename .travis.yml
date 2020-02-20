@@ -3,10 +3,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t rnarukulla2/CICD_Travis -f Dockerfile.dev .
+  - docker build -t rnarukulla2/cicd_travis -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true rnarukulla2/CICD_Travis npm run test -- --coverage
+  - docker run -e CI=true rnarukulla2/cicd_travis npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
