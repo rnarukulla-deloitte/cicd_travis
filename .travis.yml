@@ -8,15 +8,18 @@ before_install:
 script:
   - docker run -e CI=true rnarukulla2/cicd_travis npm run test -- --coverage
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-west-2"
-#   app: "docker"
-#   env: "Docker-env"
-#   bucket_name: "elasticbeanstalk-us-west-2-306476627547"
-#   bucket_path: "docker"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key:
-#     secure: "$AWS_SECRET_KEY"
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "cicd_docker"
+  env: "CicdDocker-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-784341780032"
+  bucket_path: "cicd_docker"
+  on:
+    branch: master  
+  access_key_id: $AWS_access_key
+  secret_access_key:
+    secure: "$AWS_secret_key"
+
+  # http://cicddocker-env.hvgfpf5hbi.ap-south-1.elasticbeanstalk.com/
